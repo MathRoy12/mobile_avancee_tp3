@@ -12,7 +12,12 @@
           "package_name": "com.example.mobile_avancee_tp3"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "931118622208-1gaefa2sopdjo01d23q9jfttiiro393u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCe_IXKImdeVbNLGtmOhFNB_9emSjJeu9s"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931118622208-1gaefa2sopdjo01d23q9jfttiiro393u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -1,14 +1,9 @@
-// import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mobile_avancee_tp3/pages/home_page.dart';
 
-// import '../dto/transfer.dart';
 import '../generated/l10n.dart';
-
-// import '../services/http_service.dart';
-import '../widgets/custom_text_field.dart';
-// import 'home_page.dart';
+import '../services/account_service.dart';
 
 class ConnectionPage extends StatefulWidget {
   const ConnectionPage({super.key});
@@ -30,31 +25,13 @@ class _ConnectionPageState extends State<ConnectionPage> {
     });
   }
 
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
-
   void showSnackBar(String text) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
   }
 
   void navigateToHome() {
-    // Navigator.of(context).pushReplacement(
-    //     MaterialPageRoute(builder: (context) => const HomePage()));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const HomePage()));
   }
 
   @override

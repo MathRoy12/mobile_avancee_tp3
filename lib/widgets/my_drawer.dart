@@ -1,12 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:mobile_avancee_tp1_2/pages/connection_page.dart';
-// import 'package:mobile_avancee_tp1_2/pages/home_page.dart';
-// import 'package:mobile_avancee_tp1_2/services/http_service.dart';
-// import 'package:mobile_avancee_tp1_2/services/username_service.dart';
+import 'package:mobile_avancee_tp3/pages/connection_page.dart';
+import 'package:mobile_avancee_tp3/services/account_service.dart';
 //
 import '../generated/l10n.dart';
-// import '../pages/creation_page.dart';
-import '../services/username_service.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -16,7 +13,6 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  final UsernameService _usernameService = UsernameService();
   TextStyle buttonStyle = const TextStyle(fontSize: 20);
 
   void createNew() {
@@ -32,10 +28,10 @@ class _MyDrawerState extends State<MyDrawer> {
   }
 
   void logout() {
-    // signout();
-    // Navigator.pop(context);
-    // Navigator.pushReplacement(context,
-    //     MaterialPageRoute(builder: (context) => const ConnectionPage()));
+    signout();
+    Navigator.pop(context);
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => const ConnectionPage()));
   }
 
   @override
@@ -48,7 +44,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   BoxDecoration(color: Theme.of(context).colorScheme.primary),
               child: Center(
                   child: Text(
-                _usernameService.username,
+                FirebaseAuth.instance.currentUser!.email!,
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 25,

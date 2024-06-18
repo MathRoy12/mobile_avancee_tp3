@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "931118622208",
+    "project_id": "tp3-mobile-avancee",
+    "storage_bucket": "tp3-mobile-avancee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931118622208:android:5d630337a1a9f15248dae5",
+        "android_client_info": {
+          "package_name": "com.example.mobile_avancee_tp3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe_IXKImdeVbNLGtmOhFNB_9emSjJeu9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'tp3-mobile-avancee',
     storageBucket: 'tp3-mobile-avancee.appspot.com',
   );
+
 }

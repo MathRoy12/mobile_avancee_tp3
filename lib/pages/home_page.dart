@@ -6,6 +6,7 @@ import 'package:mobile_avancee_tp3/widgets/my_drawer.dart';
 import '../generated/l10n.dart';
 import '../models/task.dart';
 import '../services/task_service.dart';
+import 'creation_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,9 +16,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   void createNew() {
-    // Navigator.push(
-    //     context, MaterialPageRoute(builder: (context) => const CreationPage()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const CreationPage()));
   }
 
   detail(String id) {
@@ -29,32 +31,26 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .inversePrimary,
-        title: Text(S
-            .of(context)
-            .home),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(S.of(context).home),
       ),
       drawer: const MyDrawer(),
       body: Center(
         child: FutureBuilder<List<Task>>(
-            future: getTasks(),
-        builder: (context, lst) {
-          if (lst.hasData) {
-            return buildListView(lst.data!);
-          } else {
-            return const CircularProgressIndicator();
-          }
-        },
+          future: getTasks(),
+          builder: (context, lst) {
+            if (lst.hasData) {
+              return buildListView(lst.data!);
+            } else {
+              return const CircularProgressIndicator();
+            }
+          },
+        ),
       ),
-    )
-    ,
-    floatingActionButton: FloatingActionButton(
-    onPressed: createNew,
-    child: const Icon(Icons.add),
-    ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: createNew,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
@@ -74,10 +70,7 @@ class _HomePageState extends State<HomePage> {
                   ListTile(
                     title: Text(items[index].name),
                     subtitle: Text(
-                        "${S
-                            .of(context)
-                            .deadline} : ${DateFormat(S.current.dateFormat)
-                            .format(items[index].deadline)}"),
+                        "${S.of(context).deadline} : ${DateFormat(S.current.dateFormat).format(items[index].deadline)}"),
                   ),
                   buildImage(items, index),
                   Row(
@@ -88,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                           .percentageDoneHome(items[index].percentageDone)),
                       Text(S
                           .of(context)
-                          .timeElapsed(/*items[index].percentageTimeSpent*/0))
+                          .timeElapsed(/*items[index].percentageTimeSpent*/ 0))
                     ],
                   ),
                 ],
@@ -99,21 +92,20 @@ class _HomePageState extends State<HomePage> {
   }
 
   SizedBox buildImage(List<Task> items, int index) {
-    return (/*items[index].photoId*/0 > 0)
+    return (/*items[index].photoId*/ 0 > 0)
         ? SizedBox(
-      height: 200,
-      width: 325,
-      child: CachedNetworkImage(
-        fit: BoxFit.cover,
-        imageUrl:
-        "http://10.0.2.2:8080/file/${/*items[index].photoId*/0}?width=300",
-        placeholder: (context, url) =>
-        const Center(
-          child: CircularProgressIndicator(),
-        ),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
-      ),
-    )
+            height: 200,
+            width: 325,
+            child: CachedNetworkImage(
+              fit: BoxFit.cover,
+              imageUrl:
+                  "http://10.0.2.2:8080/file/${/*items[index].photoId*/ 0}?width=300",
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
+          )
         : const SizedBox();
   }
 }

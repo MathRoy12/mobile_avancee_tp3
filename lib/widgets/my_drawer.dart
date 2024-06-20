@@ -2,8 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_avancee_tp3/pages/connection_page.dart';
 import 'package:mobile_avancee_tp3/services/account_service.dart';
+
 //
 import '../generated/l10n.dart';
+import '../pages/creation_page.dart';
+import '../pages/home_page.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -16,15 +19,15 @@ class _MyDrawerState extends State<MyDrawer> {
   TextStyle buttonStyle = const TextStyle(fontSize: 20);
 
   void createNew() {
-    // Navigator.pop(context);
-    // Navigator.of(context).pushReplacement(
-    //     MaterialPageRoute(builder: (context) => const CreationPage()));
+    Navigator.pop(context);
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const CreationPage()));
   }
 
   void goHome() {
-    // Navigator.pop(context);
-    // Navigator.of(context).pushReplacement(
-    //     MaterialPageRoute(builder: (context) => const HomePage()));
+    Navigator.pop(context);
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const HomePage()));
   }
 
   void logout() {
@@ -47,7 +50,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 FirebaseAuth.instance.currentUser!.email!,
                 style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold),
               ))),
           ListTile(

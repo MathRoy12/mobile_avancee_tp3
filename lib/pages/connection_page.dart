@@ -15,16 +15,6 @@ class ConnectionPage extends StatefulWidget {
 class _ConnectionPageState extends State<ConnectionPage> {
   bool isLoading = false;
 
-  @override
-  void initState() {
-    super.initState();
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user != null) {
-        navigateToHome();
-      }
-    });
-  }
-
   void showSnackBar(String text) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
   }
@@ -32,6 +22,13 @@ class _ConnectionPageState extends State<ConnectionPage> {
   void navigateToHome() {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const HomePage()));
+  }
+
+  Future<void> signin() async {
+    await signInWithGoogle();
+    if (FirebaseAuth.instance.currentUser != null) {
+      navigateToHome();
+    }
   }
 
   @override
@@ -45,7 +42,7 @@ class _ConnectionPageState extends State<ConnectionPage> {
         padding: const EdgeInsets.all(10),
         child: Center(
           child: MaterialButton(
-            onPressed: signInWithGoogle,
+            onPressed: signin,
             color: Colors.blue,
             child: Text(
               S.of(context).connection,

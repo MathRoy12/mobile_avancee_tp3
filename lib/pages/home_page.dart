@@ -7,6 +7,7 @@ import '../generated/l10n.dart';
 import '../models/task.dart';
 import '../services/task_service.dart';
 import 'creation_page.dart';
+import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,15 +17,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   void createNew() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const CreationPage()));
   }
 
   detail(String id) {
-    // Navigator.push(
-    //     context, MaterialPageRoute(builder: (context) => DetailPage(id: id)));
+     Navigator.push(
+         context, MaterialPageRoute(builder: (context) => DetailPage(id: id)));
   }
 
   @override
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: const MyDrawer(),
       body: Center(
-        child: FutureBuilder<List<Task>>(
+        child: FutureBuilder<List<AppTask>>(
           future: getTasks(),
           builder: (context, lst) {
             if (lst.hasData) {
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  ListView buildListView(List<Task> items) {
+  ListView buildListView(List<AppTask> items) {
     return ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -91,21 +91,23 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
-  SizedBox buildImage(List<Task> items, int index) {
-    return (/*items[index].photoId*/ 0 > 0)
-        ? SizedBox(
-            height: 200,
-            width: 325,
-            child: CachedNetworkImage(
-              fit: BoxFit.cover,
-              imageUrl:
-                  "http://10.0.2.2:8080/file/${/*items[index].photoId*/ 0}?width=300",
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(),
-              ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
-          )
-        : const SizedBox();
+  SizedBox buildImage(List<AppTask> items, int index) {
+    if(items[index].imgURL != ""){
+      return SizedBox(
+        height: 200,
+        width: 325,
+        child: CachedNetworkImage(
+          fit: BoxFit.cover,
+          imageUrl: items[index].imgURL,
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
+        ),
+      );
+    }
+    else{
+      return const SizedBox();
+    }
   }
 }

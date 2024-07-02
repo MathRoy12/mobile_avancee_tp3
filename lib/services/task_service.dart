@@ -32,6 +32,10 @@ Future<List<AppTask>> getTasks() async {
   var result = await col.get();
   List<AppTask> tasks = result.docs.map((e) => snapshotToTask(e)).toList();
 
+  tasks.sort((a, b) {
+    return a.deadline.compareTo(b.deadline);
+  });
+
   return tasks;
 }
 
@@ -90,7 +94,7 @@ Future<bool> isTaskNameTaken(String name) async {
       .doc(user!.uid)
       .collection("tasks");
 
-  var result = await ref. where("name", isEqualTo: name).get();
+  var result = await ref.where("name", isEqualTo: name).get();
 
   return result.docs.isNotEmpty;
 }

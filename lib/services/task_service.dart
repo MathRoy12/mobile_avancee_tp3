@@ -32,6 +32,10 @@ Future<List<AppTask>> getTasks() async {
   var result = await col.get();
   List<AppTask> tasks = result.docs.map((e) => snapshotToTask(e)).toList();
 
+  tasks.sort((a, b) {
+    return a.deadline.compareTo(b.deadline);
+  });
+
   return tasks;
 }
 
@@ -85,12 +89,12 @@ AppTask snapshotToTask(DocumentSnapshot<Object?> snapshot) {
 
 Future<bool> isTaskNameTaken(String name) async {
   User? user = FirebaseAuth.instance.currentUser;
-  CollectionReference ref = await FirebaseFirestore.instance
+  CollectionReference ref = FirebaseFirestore.instance
       .collection("users")
       .doc(user!.uid)
       .collection("tasks");
 
-  var result = await ref. where("name", isEqualTo: name).get();
+  var result = await ref.where("name", isEqualTo: name).get();
 
   return result.docs.isNotEmpty;
 }

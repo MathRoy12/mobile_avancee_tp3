@@ -104,7 +104,7 @@ class _CreationPageState extends State<CreationPage> {
               _name = value!;
             },
             validator: (value) {
-              if (value!.isEmpty) {
+              if (value!.trim() == '') {
                 return S.of(context).nameValidation;
               }
               return null;

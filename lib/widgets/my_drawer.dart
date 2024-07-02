@@ -30,11 +30,10 @@ class _MyDrawerState extends State<MyDrawer> {
         MaterialPageRoute(builder: (context) => const HomePage()));
   }
 
-  void logout() async{
+  void logout() async {
     await signout();
-    Navigator.pop(context);
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => const ConnectionPage()));
+    Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (context) => const ConnectionPage()), (route) => false);
   }
 
   @override

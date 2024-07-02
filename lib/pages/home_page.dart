@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                           .percentageDoneHome(items[index].percentageDone)),
                       Text(S
                           .of(context)
-                          .timeElapsed(/*items[index].percentageTimeSpent*/ 0))
+                          .timeElapsed(items[index].percentageTimeSpent))
                     ],
                   ),
                 ],

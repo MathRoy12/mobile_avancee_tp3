@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `This name is already taken`
+  String get taskNameAlreadyTaken {
+    return Intl.message(
+      'This name is already taken',
+      name: 'taskNameAlreadyTaken',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An error as occurred`
   String get globalError {
     return Intl.message(
@@ -290,10 +300,10 @@ class S {
     );
   }
 
-  /// `La tâche n'a pas été trouvé`
+  /// `The task wasn't found`
   String get taskNotFound {
     return Intl.message(
-      'La tâche n\'a pas été trouvé',
+      'The task wasn\'t found',
       name: 'taskNotFound',
       desc: '',
       args: [],

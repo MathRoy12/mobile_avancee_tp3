@@ -58,8 +58,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectDeadline":
             MessageLookupByLibrary.simpleMessage("Select deadline"),
         "selectImage": MessageLookupByLibrary.simpleMessage("Select an image"),
-        "taskNotFound": MessageLookupByLibrary.simpleMessage(
-            "La tâche n\'a pas été trouvé"),
+        "taskNameAlreadyTaken":
+            MessageLookupByLibrary.simpleMessage("This name is already taken"),
+        "taskNotFound":
+            MessageLookupByLibrary.simpleMessage("The task wasn\'t found"),
         "timeElapsed": m1,
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "usernameAlreadyTaken": MessageLookupByLibrary.simpleMessage(

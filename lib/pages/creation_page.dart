@@ -31,15 +31,25 @@ class _CreationPageState extends State<CreationPage> {
 
   void _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
       isLoading = true;
       setState(() {});
+      if (_deadline.difference(DateTime.now()).isNegative) {
+        showSnackBar("Votre date limite ne peut pas être dans le passé");
+        isLoading = false;
+        setState(() {});
+        return;
+      } else if (await isTaskNameTaken(_name)) {
+        showSnackBar(S.current.taskNameAlreadyTaken);
+        isLoading = false;
+        setState(() {});
+        return;
+      }
 
-      try{
+      _formKey.currentState!.save();
+      try {
         await addTask(_name, _deadline);
         navigateToHome();
-      }
-      catch(e){
+      } catch (e) {
         showSnackBar(S.current.globalError);
         isLoading = false;
         setState(() {});

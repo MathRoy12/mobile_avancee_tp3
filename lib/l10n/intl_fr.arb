@@ -34,6 +34,7 @@
   "confirmPasswordValidation": "Veuillez confirmé votre mot de passe",
   "samePasswordValidation": "Votre confirmation n'est pas comme votre mot de passe",
   "nameValidation": "La tache doit avoir un nom",
+  "taskNameAlreadyTaken":  "Ce nom a déja été pris",
   "globalError": "Une erreur c'est produite",
   "dateFormat": "dd MMMM y",
   "badCredentials" : "Votre nom d'utilisateur ou votre mot de passe est mauvais",

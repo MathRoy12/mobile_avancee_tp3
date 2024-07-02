@@ -34,10 +34,11 @@
   "confirmPasswordValidation": "You need to confirm your password",
   "samePasswordValidation": "Your confirmation isn't like your password",
   "nameValidation": "The task need a name",
+  "taskNameAlreadyTaken":  "This name is already taken",
   "globalError": "An error as occurred",
   "dateFormat": "MMMM dd y",
   "badCredentials" : "Your password or username is wrong",
-  "taskNotFound" : "La tâche n'a pas été trouvé",
+  "taskNotFound" : "The task wasn't found",
   "usernameTooShort" : "Your username is too short",
   "passwordTooShort" : "your password is too short",
   "usernameAlreadyTaken" : "this username is already taken"

@@ -82,3 +82,15 @@ AppTask snapshotToTask(DocumentSnapshot<Object?> snapshot) {
     ..percentageDone = snapshot['percentageDone']
     ..imgURL = snapshot['imgURL'];
 }
+
+Future<bool> isTaskNameTaken(String name) async {
+  User? user = FirebaseAuth.instance.currentUser;
+  CollectionReference ref = await FirebaseFirestore.instance
+      .collection("users")
+      .doc(user!.uid)
+      .collection("tasks");
+
+  var result = await ref. where("name", isEqualTo: name).get();
+
+  return result.docs.isNotEmpty;
+}

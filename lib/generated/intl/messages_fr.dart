@@ -58,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Choisissez votre échéance"),
         "selectImage":
             MessageLookupByLibrary.simpleMessage("Sélectionner une image"),
+        "taskNameAlreadyTaken":
+            MessageLookupByLibrary.simpleMessage("Ce nom a déja été pris"),
         "taskNotFound":
             MessageLookupByLibrary.simpleMessage("The taks wasn\'t found"),
         "timeElapsed": m1,

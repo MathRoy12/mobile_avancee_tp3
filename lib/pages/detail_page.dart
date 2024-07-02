@@ -125,7 +125,7 @@ class _DetailPageState extends State<DetailPage> {
           ),
           const SizedBox(height: 20),
           Text(
-              "${S.of(context).deadline}: ${DateFormat(S.current.dateFormat).format(item.deadline)} (${/*item.percentageTimeSpent*/ 0}%)"),
+              "${S.of(context).deadline}: ${DateFormat(S.current.dateFormat).format(item.deadline)} (${item.percentageTimeSpent}%)"),
           const SizedBox(height: 20),
           Text(S.of(context).percentageDoneDetail),
           Slider(
